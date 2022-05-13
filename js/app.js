@@ -31,6 +31,9 @@ function scrollHandler() {
             }, 700);
         }
     }
+    window.addEventListener('resize', function () {
+        window.removeEventListener('resize', arguments.callee);
+    });
     function scroll(direction) {
         scrollPos += direction;
         const karte = document.getElementById('KartenBereich');
@@ -49,8 +52,6 @@ function scrollHandler() {
                 break;
         }
     }
-}
-function textHeroAnimation() {
 }
 function svgScaler(returnNewPath = false) {
     const originalWidth = 508;

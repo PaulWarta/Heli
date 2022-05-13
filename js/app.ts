@@ -32,6 +32,10 @@ function scrollHandler() {
       }, 700);
     }
   }
+
+  window.addEventListener('resize', function() {
+    window.removeEventListener('resize', arguments.callee);
+  })
   
   function scroll(direction: number) {
     scrollPos += direction;
@@ -52,10 +56,6 @@ function scrollHandler() {
         break;
     }
   }
-}
-
-function textHeroAnimation() {
-
 }
 
 function svgScaler(returnNewPath = false) {

@@ -143,7 +143,7 @@ nav #KontaktContainer h2 {
   position: absolute;
   top: 0;
   margin: 20vh 0 0 10vw;
-  font-size: clamp(3rem, 6.2vw, 50vh);
+  font-size: clamp(3rem, 6.2vw, 55px);
   height: 3.9em;
   overflow: hidden;
 }
