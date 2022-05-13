@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heli Isa</title>
+  <link rel="stylesheet" href="./css/main.css">
+  <script src="./js/app.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <div id="HamburgerContainer" class="hamburgerOpener" onclick="document.querySelectorAll('.hamburgerOpener').forEach(e => e.classList.toggle('open'))">
+        <div id="Hamburger"></div>
+      </div>
+      <div id="NavContainer" class="hamburgerOpener">
+        <a href="/#Hero">Home</a>
+        <a href="/#Sektion2">Sektion2</a>
+        <a href="/#Sektion3">Sektion3</a>
+        <a href="/#Sektion4">Sektion4</a>
+      </div>
+      <div id="Heading">
+        <h1>Get On Board!</h1>
+        <p>Zum Selbstkostenpreis</p>
+      </div>
+      <div id="KontaktContainer" onclick="this.classList.toggle('open')">
+        <img src="./Images/Heli.svg" alt="Kontakt">
+        <h2>Kontakt</h2>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section id="Hero">
+      <div id="TextBereichHero">
+          <div>
+            <h2>
+              <span>Der schönste    <br> Reichweite 500km     <br> Cabri G2             <br>  Pilotin  </span>
+            </h2>
+            <h2>
+              <span>Ausblick über   <br> Reisehöhe 1500ft     <br> Leergewicht 425kg    <br>  Isabell  </span>
+            </h2>
+            <h2>
+              <span>das Ruhrgebiet  <br> Geschwindigkeit 80kt <br> Abfluggewicht 700kg  <br>  Block    </span>
+            </h2>
+            <!-- <h2>
+              <span>Reichweite 500km</span><br/><span>Reisehöhe 1500ft</span><br/><span>geschwindigkeit 80kt</span>
+            </h2>
+            <h2>
+              <span>56 Flugstunden</span><br/><span>3400km geflogen</span><br><span>Ihre Pilotin</span>
+            </h2>
+            <h2>
+              <span>Cabri G2</span><br/><span>Leergewicht 425kg</span><br/><span>Abfluggewicht 700kg</span>
+            </h2> -->
+          </div>
+      </div>
+      <div id="KartenBereich">
+        <img id="Karte" src="./Images/Karte.svg" alt="Karte">
+        <img id="Heli" src="./Images/Heli.svg" alt="Heli">
+        <img id="Pfad" src="./Images/Pfad.svg" alt="Pfad">
+      </div>
+    </section>
+    
+  </main>
+  <footer></footer>
+</body>
+</html>

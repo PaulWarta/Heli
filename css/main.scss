@@ -1,0 +1,332 @@
+:root {
+  --font-size3: 2rem;
+  --font-color: #fff;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  cursor: url(../Images/heli.png), auto;
+}
+
+* {
+  font-family: Helvetica, sans-serif;
+  color: var(--font-color);
+  box-sizing: border-box;
+}
+
+
+// Header
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 12px;
+  z-index: 20;
+
+  #NavContainer {
+    position: absolute;
+    top: 0;
+    left: -36ch;
+    height: 100vh;
+    width: 36ch;
+    z-index: 10;
+    transform: translateX(0%);
+    transition: 500ms ease-in-out;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+    padding-top: 80px;
+    
+    background: hsl(197, 67%, 20%);
+    
+    
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-size: var(--font-size3);
+      margin: 2em 0 2em 50px;
+    }
+
+    &.open {
+        transform: translateX(99%);
+    }
+  }
+
+  #HamburgerContainer {
+    width: 36px;
+    height: 28px;
+    z-index: 15;
+  
+    #Hamburger {
+      --line-height: 3px;
+      width: 100%;
+      height: var(--line-height);
+      background: var(--font-color);
+      transform: translateY(12px);
+      transition: transform 200ms ease-in-out, background-color 100ms ease;
+      
+      &::before, &::after {
+        content: '';
+        position: absolute;
+        background-color: var(--font-color);
+        width: inherit;
+        height: inherit;
+        transition: inherit;
+      }
+      
+      &::before {
+        transform: translateY(-12px);
+        transition: transform 200ms ease-in-out, background-color 50ms linear;
+      }
+    
+      &::after {
+        transform: translateY(12px);
+        transition: transform 200ms ease-in-out, background-color 50ms linear;
+      }
+    
+    }
+    &.open {
+      #Hamburger {
+        background-color: rgba(255, 255, 255, 0);
+        
+        &::before {
+          transform: rotate(-45deg);
+          background-color: #fff;
+          transition: transform 200ms ease-in-out, 50ms background-color linear 150ms;
+        }
+        &::after {
+          transform: rotate(45deg);
+          background-color: #fff;
+          transition: transform 200ms ease-in-out, 50ms background-color linear 150ms;
+        }
+      }
+    }
+  }
+
+  #Heading {
+    h1 {
+      font-size: clamp(0px, 6vw, 50px);
+    }
+
+    p {
+      font-size: clamp(0px, 2vw, 16px);
+    }
+    
+    h1, p {
+      margin: 0;
+      text-align: end;
+      text-transform: uppercase;
+    }
+  }
+  
+  #KontaktContainer {
+    width: 4em;
+    font-size: 1.4rem;
+    height: 5ex;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  
+    &:hover {
+      img {
+        transform: rotateZ(12deg);
+      }
+    }
+    
+    img {
+      width: 80%;
+      transform-origin: bottom right;
+      transition: 300ms ease-in-out;
+    }
+  
+  
+    h2 {
+      margin: 0;
+      font-size: inherit;
+    }
+  }
+}
+
+
+
+// Hero Section
+
+#Hero {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  z-index: 98;
+
+  background: radial-gradient(80% 80% at 0% 100%, hsla(285,10%,63%,1) 0%, hsla(285,10%,63%,0) 100%),
+              radial-gradient(80% 80% at 100% 0%, hsla(285,10%,63%,1) 0%, hsla(285,10%,63%,0) 100%),
+              hsla(195,46%,61%,1);
+
+  .scrollHelper {
+    width: 100vw;
+    height: 100vh;
+    scroll-snap-align: center;
+  }
+
+  #TextBereichHero {
+    position: absolute;
+    top: 0;
+    margin: 20vh 0 0 10vw;
+    font-size: clamp(3rem, 6.2vw, 50vh);
+    height: 3.9em;
+    overflow: hidden;
+
+    div {
+      transition: 500ms ease-in-out;
+      position: relative;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: inherit;
+      text-transform: uppercase;
+      line-height: 135%;
+      height: 1.2em;
+      overflow: hidden;
+
+      span {
+        display: block;
+        transition: 600ms ease-in-out;
+      }
+    }
+
+  }
+
+  #KartenBereich {
+    --horizontal-scroll-speed: 1400ms;
+    $c: &;
+    position: fixed;
+    bottom: -5px;
+    left: 0;
+    transition: var(--horizontal-scroll-speed) cubic-bezier(.54,.42,.33,.99);
+
+    @media screen and (max-width: 480px) {
+      width: 400vw;
+    }
+
+    @media screen and (min-width: 480px) and (max-width: 640px) {
+      width: 300vw;
+    }
+
+    @media screen and (min-width: 640px) and (max-width: 890px) {
+      width: 200vw;
+    }
+
+    @media screen and (min-width: 890px) {
+      width: 100vw;
+    }
+
+    #Karte {
+      position: relative;
+      width: 100%;
+      left: 0;
+      // transition: transform 2000ms ease;
+    }
+  
+    #Heli {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50px;
+      height: 18px;
+      offset-rotate: 0deg;
+      transform-origin: center;
+      transform: translateX(-8px) scale(150%);
+      offset-distance: 3%;
+      z-index: 1;
+      transition: offset-distance var(--horizontal-scroll-speed) cubic-bezier(.54,.42,.33,.99);
+    
+      // @media screen and (max-width: 480px) {
+      //   transition: offset-distance 300ms ease-out;
+      // }
+  
+      // @media screen and (min-width: 480px) and (max-width: 640px) {
+      //   transition: offset-distance 400ms ease-out;
+      // }
+  
+      // @media screen and (min-width: 640px) and (max-width: 890px) {
+      //   transition: offset-distance 600ms ease-out;
+      // }
+  
+      // @media screen and (min-width: 890px) {
+      //   transition: offset-distance 900ms ease-out;
+      // }
+    }
+  
+    #Pfad {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    #TestPfad {
+      fill: none;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    #Heli.state1 {
+      animation: followpath1 10s linear infinite;
+    }
+
+    #Heli.state2 {
+      animation: followpath2 10s linear infinite;
+    }
+
+    #Heli.state3 {
+      animation: followpath3 10s linear infinite;
+    }
+
+    #Heli.state4 {
+      animation: followpath4 10s linear infinite;
+    }
+
+    @keyframes followpath1 {
+      to {
+        motion-offset: 20%;
+        offset-distance: 20%;
+      }
+    }
+
+    @keyframes followpath2 {
+      to {
+        motion-offset: 35%;
+        offset-distance: 35%;
+      }
+    }
+
+    @keyframes followpath3 {
+      to {
+        motion-offset: 35%;
+        offset-distance: 35%;
+      }
+    }
+
+    @keyframes followpath4 {
+      to {
+        motion-offset: 35%;
+        offset-distance: 35%;
+      }
+    }
+  }  
+}
