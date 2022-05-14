@@ -158,7 +158,11 @@ nav {
       
       &.kontaktOpen {
         transform: translateX(88vw);
+        @media screen and (max-width: 875px) {
+          transform: translateX(80vw);
+        }
       }
+
       
       & > #KontaktHeliMoverVert.kontaktOpen {
         animation: animateKontaktHeliVert 4s cubic-bezier(.56,-0.21,.52,1.02) 100ms forwards;
@@ -260,7 +264,7 @@ nav {
 
     & > div {
       display: grid;
-      min-width: 80vw;
+      max-width: 75vw;
       grid-template-columns: repeat(auto-fit, 33ch);
       align-items: center;
       justify-content: center;
