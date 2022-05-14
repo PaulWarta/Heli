@@ -5,11 +5,11 @@ function main() {
   // svgScaler();
   // textHeroAnimation();
   scrollHandler();
+  kontaktHeliAnimation();
 }
 
 function scrollHandler() {
   let scrollPos = 0;
-  let timer: any;
   let scrollHeight = 0;
   let path = svgScaler(true);
   const heli = document.getElementById('Heli') as HTMLElement;
@@ -33,8 +33,13 @@ function scrollHandler() {
     }
   }
 
-  window.addEventListener('resize', function() {
-    window.removeEventListener('resize', arguments.callee);
+  window.addEventListener('resize', function handler() {
+    window.removeEventListener('resize', handler);
+    setTimeout(() => {
+      path = svgScaler(true);
+      heli.setAttribute('style', `offset-path: path("${path}"); offset-distance: ${((scrollPos * 100) / 3) * 0.94 + 3}%;`);
+      window.addEventListener('resize', handler);
+    }, 20);
   })
   
   function scroll(direction: number) {
@@ -81,6 +86,21 @@ function svgScaler(returnNewPath = false) {
     }, 100);
   });
   (document.getElementById('Heli') as HTMLElement).setAttribute('style', `offset-path: path("${newPath}")`);
+}
+
+function kontaktHeliAnimation() {
+  const container = document.getElementById('KontaktContainer') as HTMLElement;
+  container.addEventListener('click', function handler1() {
+    document.querySelectorAll('.kontaktOpener').forEach(e => e.classList.add('kontaktOpen'));
+    container.removeEventListener('click', handler1);
+    container.addEventListener('click', handler2);
+  })
+  function handler2() {
+    document.querySelectorAll('.kontaktOpener').forEach(e => {
+      e.classList.toggle('kontaktOpen');
+      e.classList.toggle('kontaktClosed');
+    });
+  }
 }
 
 

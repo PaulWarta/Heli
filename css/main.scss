@@ -1,13 +1,15 @@
 :root {
   --font-size3: 2rem;
   --font-color: #fff;
+  --background-gradient: radial-gradient(80% 80% at 0% 100%, hsla(285,10%,63%,1) 0%, hsla(285,10%,63%,0) 100%),
+                         radial-gradient(80% 80% at 100% 0%, hsla(285,10%,63%,1) 0%, hsla(285,10%,63%,0) 100%),
+                       hsla(195,46%,61%,1);
 }
 
 html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  cursor: url(../Images/heli.png), auto;
 }
 
 * {
@@ -39,7 +41,7 @@ nav {
     width: 36ch;
     z-index: 10;
     transform: translateX(0%);
-    transition: 500ms ease-in-out;
+    transition: transform 500ms ease-in-out;
     
     display: flex;
     flex-direction: column;
@@ -103,18 +105,20 @@ nav {
         &::before {
           transform: rotate(-45deg);
           background-color: #fff;
-          transition: transform 200ms ease-in-out, 50ms background-color linear 150ms;
+          transition: transform 200ms ease-in-out, background-color 50ms linear 150ms;
         }
         &::after {
           transform: rotate(45deg);
           background-color: #fff;
-          transition: transform 200ms ease-in-out, 50ms background-color linear 150ms;
+          transition: transform 200ms ease-in-out, background-color 50ms linear 150ms;
         }
       }
     }
   }
 
   #Heading {
+    z-index: 8;
+
     h1 {
       font-size: clamp(0px, 6vw, 50px);
     }
@@ -134,33 +138,162 @@ nav {
     width: 4em;
     font-size: 1.4rem;
     height: 5ex;
-  
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-  
+    transform: rotateY(180deg);
+    z-index: 9;
+    
     &:hover {
       img {
         transform: rotateZ(12deg);
       }
     }
     
-    img {
-      width: 80%;
-      transform-origin: bottom right;
-      transition: 300ms ease-in-out;
+    #KontaktHeliMoverHoriz {
+      padding: 0 0 0 5%;
+      transition: 4000ms ease-in-out;
+      
+      &.kontaktOpen {
+        transform: translateX(88vw);
+      }
+      
+      & > #KontaktHeliMoverVert.kontaktOpen {
+        animation: animateKontaktHeliVert 4s cubic-bezier(.56,-0.21,.52,1.02) 100ms forwards;
+      }
+      
+      & > #KontaktHeliMoverVert.kontaktClosed {
+        animation: animateKontaktHeliVertRev 3900ms cubic-bezier(.45,.15,.51,1.22) 5ms forwards;
+      }
+
+      @keyframes animateKontaktHeliVertRev {
+        0% {
+          transform: translateY(45vh);
+        }
+        100% {
+          transform: translateY(0vh);
+        }
+      }
+
+      @keyframes animateKontaktHeliVert {
+        0% {
+          transform: translateY(0vh);
+        }
+        100% {
+          transform: translateY(45vh);
+        }
+      }
     }
-  
-  
+    
+    img {
+      width: 90%;
+      transform-origin: bottom right;
+      transition: 200ms ease-in-out;
+      
+      &.kontaktOpen {
+        animation: KontaktHeliRotate 1000ms cubic-bezier(.49,.03,.4,1.37) 3000ms forwards;
+        transform: rotateZ(12deg);
+      }
+      
+      &.kontaktClosed {
+        animation: KontaktHeliRotateRev 4000ms ease 1ms forwards;
+        transform: rotateZ(0deg);
+      }
+
+      @keyframes KontaktHeliRotateRev {
+        0% {
+          transform: rotateZ(0deg);
+        }
+        10% {
+          transform: rotateZ(-12deg);
+        }
+        85% {
+          transform: rotateZ(-12deg);
+        }
+        100% {
+          transform: rotateZ(0deg);
+        }
+      }
+        
+      @keyframes KontaktHeliRotate {
+        from {
+          transform: rotateZ(12deg);
+        }
+        to {
+          transform: rotateZ(0deg);
+        }
+      }
+
+    }
+
     h2 {
       margin: 0;
       font-size: inherit;
+      transform: rotateY(-180deg);
+      transition: color 600ms linear;
+      color: var(--font-color);
+
+      &.kontaktOpen {
+        color: rgba(255, 255, 255, 0);
+      }
+    }
+  }
+
+  #KontaktSection {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    right: -100vw;
+    z-index: 7;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 800ms ease-in-out 100ms, opacity 1000ms ease-in-out 200ms;
+    transform: translateX(0%);
+    opacity: 0;
+
+    background: var(--background-gradient);
+
+    & > div {
+      display: grid;
+      min-width: 80vw;
+      grid-template-columns: repeat(auto-fit, 33ch);
+      align-items: center;
+      justify-content: center;
+      justify-items: center;
+      
+    
+      img {
+        width: 200px;
+        height: 200px;
+      }
+
+      div {
+        text-transform: uppercase;
+      }
+    }
+
+    &.kontaktOpen {
+      transform: translateX(-100%);
+      opacity: 1;
     }
   }
 }
 
 
+
+main {
+  transition: opacity 800ms ease-in-out;
+  opacity: 100%;
+
+  &.kontaktOpen {
+    opacity: 60%;
+  }
+}
 
 // Hero Section
 
@@ -170,26 +303,18 @@ nav {
   scroll-snap-type: y mandatory;
   z-index: 98;
 
-  background: radial-gradient(80% 80% at 0% 100%, hsla(285,10%,63%,1) 0%, hsla(285,10%,63%,0) 100%),
-              radial-gradient(80% 80% at 100% 0%, hsla(285,10%,63%,1) 0%, hsla(285,10%,63%,0) 100%),
-              hsla(195,46%,61%,1);
-
-  .scrollHelper {
-    width: 100vw;
-    height: 100vh;
-    scroll-snap-align: center;
-  }
+  background: var(--background-gradient);
 
   #TextBereichHero {
     position: absolute;
     top: 0;
-    margin: 20vh 0 0 10vw;
-    font-size: clamp(3rem, 6.2vw, 55px);
+    margin: 4em 0 10vh 10vw;
+    font-size: clamp(16px, 6.2vw, 55px);
     height: 3.9em;
     overflow: hidden;
 
     div {
-      transition: 500ms ease-in-out;
+      transition: transform 500ms ease-in-out;
       position: relative;
     }
 
@@ -203,7 +328,7 @@ nav {
 
       span {
         display: block;
-        transition: 600ms ease-in-out;
+        transition: transform 600ms ease-in-out;
       }
     }
 
@@ -212,10 +337,10 @@ nav {
   #KartenBereich {
     --horizontal-scroll-speed: 1400ms;
     $c: &;
-    position: fixed;
+    position: absolute;
     bottom: -5px;
     left: 0;
-    transition: var(--horizontal-scroll-speed) cubic-bezier(.54,.42,.33,.99);
+    transition: transform var(--horizontal-scroll-speed) cubic-bezier(.54,.42,.33,.99);
 
     @media screen and (max-width: 480px) {
       width: 400vw;
@@ -237,7 +362,6 @@ nav {
       position: relative;
       width: 100%;
       left: 0;
-      // transition: transform 2000ms ease;
     }
   
     #Heli {
@@ -252,22 +376,6 @@ nav {
       offset-distance: 3%;
       z-index: 1;
       transition: offset-distance var(--horizontal-scroll-speed) cubic-bezier(.54,.42,.33,.99);
-    
-      // @media screen and (max-width: 480px) {
-      //   transition: offset-distance 300ms ease-out;
-      // }
-  
-      // @media screen and (min-width: 480px) and (max-width: 640px) {
-      //   transition: offset-distance 400ms ease-out;
-      // }
-  
-      // @media screen and (min-width: 640px) and (max-width: 890px) {
-      //   transition: offset-distance 600ms ease-out;
-      // }
-  
-      // @media screen and (min-width: 890px) {
-      //   transition: offset-distance 900ms ease-out;
-      // }
     }
   
     #Pfad {
@@ -285,47 +393,61 @@ nav {
       left: 0;
     }
 
-    #Heli.state1 {
-      animation: followpath1 10s linear infinite;
+    #Wolken {
+      animation: wolken 300s linear infinite;
     }
 
-    #Heli.state2 {
-      animation: followpath2 10s linear infinite;
+    #Wolken2 {
+      animation: wolken2 300s linear infinite;
     }
 
-    #Heli.state3 {
-      animation: followpath3 10s linear infinite;
-    }
-
-    #Heli.state4 {
-      animation: followpath4 10s linear infinite;
-    }
-
-    @keyframes followpath1 {
-      to {
-        motion-offset: 20%;
-        offset-distance: 20%;
+    @keyframes wolken {
+      0% {
+        transform: translateX(0%);
+        opacity: 1;
+      }
+      48% {
+        transform: translateX(-100%);
+        opacity: 1;
+      }
+      49% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      51% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      52% {
+        transform: translateX(100%);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(0%);
+        opacity: 1;
       }
     }
 
-    @keyframes followpath2 {
-      to {
-        motion-offset: 35%;
-        offset-distance: 35%;
+    @keyframes wolken2 {
+      0% {
+        transform: translateX(100%) translateY(-100%);
+        opacity: 1;
       }
-    }
-
-    @keyframes followpath3 {
-      to {
-        motion-offset: 35%;
-        offset-distance: 35%;
+      97% {
+        transform: translateX(-100%) translateY(-100%);
+        opacity: 1;
       }
-    }
-
-    @keyframes followpath4 {
-      to {
-        motion-offset: 35%;
-        offset-distance: 35%;
+      98% {
+        transform: translateX(-100%) translateY(-100%);
+        opacity: 0;
+      }
+      99% {
+        transform: translateX(100%) translateY(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(100%) translateY(-100%);
+        opacity: 1;
       }
     }
   }  
