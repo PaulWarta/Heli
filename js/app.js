@@ -5,6 +5,7 @@ function main() {
     // textHeroAnimation();
     scrollHandler();
     kontaktHeliAnimation();
+    screen.orientation.lock('portrait');
 }
 function scrollHandler() {
     let scrollPos = 0;
