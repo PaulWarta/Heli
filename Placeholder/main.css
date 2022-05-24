@@ -1,0 +1,136 @@
+* {
+  font-family: Helvetica, sans-serif;
+  color: #fff;
+}
+
+html {
+  background: radial-gradient(80% 80% at 0% 100%, #a597aa 0%, rgba(165, 151, 170, 0) 100%), radial-gradient(80% 80% at 100% 0%, #a597aa 0%, rgba(165, 151, 170, 0) 100%), #6eb2c9;
+  height: 100vh;
+  width: 100vw;
+}
+
+body {
+  margin: 0;
+}
+
+nav {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav #HamburgerContainer {
+  width: 9ch;
+  font-size: 1rem;
+  height: 26px;
+  z-index: 20;
+}
+nav #HamburgerContainer #HamburgerMenu {
+  position: fixed;
+  top: 0;
+  font-size: 1.776889rem;
+  left: -20ch;
+  width: 20ch;
+  height: 100vh;
+  background: #01039d;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 78px 0 78px 3ch;
+  align-items: flex-start;
+  z-index: 10;
+  transition: 400ms ease-in-out;
+}
+nav #HamburgerContainer #HamburgerMenu a {
+  font-size: inherit;
+  margin: 2em 0;
+}
+nav #HamburgerContainer div:first-child {
+  position: relative;
+  background: #fff;
+  width: 42px;
+  height: 3px;
+  border-radius: 8px;
+  transform: translateY(13px);
+  transition: 400ms ease-in-out;
+  z-index: 15;
+}
+nav #HamburgerContainer div:first-child::before, nav #HamburgerContainer div:first-child::after {
+  z-index: 15;
+  transition: 400ms ease-in-out;
+  position: absolute;
+  content: "";
+  width: inherit;
+  height: 3px;
+  background-color: inherit;
+  transform-origin: center;
+}
+nav #HamburgerContainer div:first-child::before {
+  transform: translateY(-13px);
+}
+nav #HamburgerContainer div:first-child::after {
+  transform: translateY(13px);
+}
+nav #HamburgerContainer.open div:first-child {
+  background: rgba(255, 255, 255, 0);
+}
+nav #HamburgerContainer.open div:first-child::before {
+  z-index: 15;
+  transform: rotateZ(405deg);
+  background: #fff;
+}
+nav #HamburgerContainer.open div:first-child::after {
+  z-index: 15;
+  transform: rotate(-405deg);
+  background: #fff;
+}
+nav #HamburgerContainer.open #HamburgerMenu {
+  transform: translateX(100%);
+}
+nav #Heading {
+  text-align: right;
+  width: fit-content;
+}
+nav #Heading h2 {
+  font-size: 2.368593037rem;
+  margin: 0;
+}
+nav #Heading p {
+  font-size: 0.5627813555rem;
+  margin: 0;
+}
+nav #KontaktContainer {
+  width: 9ch;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+nav #KontaktContainer img {
+  width: 85%;
+}
+nav #KontaktContainer p {
+  margin: 0;
+  margin-top: 4px;
+}
+
+main h1 {
+  font-size: 4rem;
+  margin: 1em;
+}
+main img:last-child {
+  transform: rotate(12deg);
+  animation: hovering 800ms ease-in-out 0s infinite alternate;
+}
+@keyframes hovering {
+  0% {
+    transform: translateY(0%) rotate(12deg);
+  }
+  100% {
+    transform: translateY(15%) rotate(12deg);
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,177 @@
+@use "sass:math";
+@use "sass:color";
+
+$font-scaler: 1.333;
+$font-smaller: 1rem * math.pow($font-scaler, -2);
+$font-small: 1rem * math.pow($font-scaler, -1);
+$font-normal: 1rem * math.pow($font-scaler, 0);
+$font-big: 1rem * math.pow($font-scaler, 1);
+$font-bigger: 1rem * math.pow($font-scaler, 2);
+$font-large: 1rem * math.pow($font-scaler, 3);
+$font-color: #fff;
+$dark-blue: #01039d;
+
+* {
+  font-family: Helvetica, sans-serif;
+  color: $font-color;
+}
+
+html {
+  background: radial-gradient(80% 80% at 0% 100%, hsla(285,10%,63%,1) 0%, hsla(285,10%,63%,0) 100%),
+  radial-gradient(80% 80% at 100% 0%, hsla(285,10%,63%,1) 0%, hsla(285,10%,63%,0) 100%),
+  hsla(195,46%,61%,1);
+  height: 100vh;
+  width: 100vw;
+}
+
+body {
+  margin: 0;
+}
+
+nav {
+  padding: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+
+  #HamburgerContainer {
+    $height: 26px;
+    width: 9ch;
+    font-size: $font-normal;
+    height: $height;
+    z-index: 20;
+
+    #HamburgerMenu {
+      position: fixed;
+      top: 0;
+      font-size: $font-bigger;
+      left: -20ch;
+      width: 20ch;
+      height: 100vh;
+      background: $dark-blue;
+      box-sizing: border-box;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: $height * 3 0 $height * 3 3ch;
+      align-items: flex-start;
+
+      z-index: 10;
+      transition: 400ms ease-in-out;
+
+      a {
+        font-size: inherit;
+        margin: 2em 0;
+      }
+    }
+
+    div:first-child {
+      position: relative;
+      background: $font-color;
+      width: 42px;
+      height: 3px;
+      border-radius: 8px;
+      transform: translateY(math.div($height, 2));
+      transition: 400ms ease-in-out;
+      z-index: 15;
+      
+      &::before, &::after {
+        z-index: 15;
+        transition: 400ms ease-in-out;
+        position: absolute;
+        content: '';
+        width: inherit;
+        height: 3px;
+        background-color: inherit;
+        transform-origin: center;
+      }
+
+      &::before {
+        transform: translateY(math.div($height, -2));
+      }
+
+      &::after {
+        transform: translateY(math.div($height, 2));
+      }
+    }
+
+    &.open {
+      div:first-child {
+        background: color.adjust($font-color, $alpha: -1);
+
+        &::before {
+          z-index: 15;
+          transform: rotateZ(405deg);
+          background: $font-color;
+        }
+        
+        &::after {
+          z-index: 15;
+          transform: rotate(-405deg);
+          background: $font-color;
+        }
+      }
+
+      #HamburgerMenu {
+        transform: translateX(100%);
+      }
+    }
+  }
+
+  #Heading {
+    text-align: right;
+    width: fit-content;
+
+    h2 {
+      font-size: $font-large;
+      margin: 0;
+    }
+
+    p {
+      font-size: $font-smaller;
+      margin: 0;
+    }
+  }
+
+  #KontaktContainer {
+    width: 9ch;
+    font-size: $font-normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+    img {
+      width: 85%;
+    }
+
+    p {
+      margin: 0;
+      margin-top: 4px;
+    }
+  }
+}
+
+main {
+  h1 {
+    font-size: 4rem;
+    margin: 1em;
+  }
+
+  img:last-child {
+    transform: rotate(12deg);
+    animation: hovering 800ms ease-in-out 0s infinite alternate;
+  }
+
+  @keyframes hovering {
+    0% {
+      transform: translateY(0%) rotate(12deg);
+    }
+    100% {
+      transform: translateY(15%) rotate(12deg);
+    }
+  }
+}

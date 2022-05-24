@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get On Board! - Isabell Block</title>
+  <meta name="description" content="Helikopterrundflüge zum Selbstkostenpreis. Als Pilotin mit der PPL Lizenz zeige ich Ihnen das RUhrgebiet von oben. Ich biete Ihnen verschiedene Touren an mit Aussicht über die eindrucksvollsten Stadien und Schlösser in NRW.">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <!-- <div style="height: 100vh; width: 2px; background: red; position: fixed; transform: translateX(calc(50vw - 2px)); top: 0"></div> -->
+  <header>
+    <nav>
+      <div id="HamburgerContainer" onclick="this.classList.toggle('open')">
+        <div></div>
+        <div id="HamburgerMenu">
+          <a>Home</a>
+          <a>Datenschutz</a>
+          <a>Impressum</a>
+        </div>
+      </div>
+      <div id="Heading">
+        <h2>GET ON BOARD!</h2>
+        <p>ZUM SELBSTKOSTENPREIS</p>
+      </div>
+      <div id="KontaktContainer">
+        <img src="./Images/HeliReverse.svg" alt="Kontakt">
+        <p>KONTAKT</p>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <h1>Helikopter Rundflüge in NRW.</h1>
+    <!-- <svg viewBox="0 0 100 100" id="MainTextClipper" preserveAspectRatio="none">
+      <path d="M0 70, L 100 0, L 100 100, L0 100, Z" fill="red" ></path>
+    </svg> -->
+    <picture>
+      <source media="(min-width: 400px)" srcset="./Images/background_400.svg">
+      <source media="(min-width: 800px)" srcset="./Images/background_800.svg">
+      <source media="(min-width: 1200px)" srcset="./Images/background_1200.svg">
+      <img src="./Images/background.svg" alt="Hintergrundgrafik"
+          srcset="
+            background_400.svg 400w,
+            background_800.svg 800w,
+            background_1200.svg 1200w
+          ">
+    </picture>
+    <img src="./Images/Heli.svg" alt="Heli" style="width: 20vw">
+  </main>
+  <footer></footer>
+</body>
+</html>

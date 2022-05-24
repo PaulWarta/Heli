@@ -1,0 +1,25 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Sass Compiler",
+      "type": "shell",
+      "command": "sass main.scss main.css --watch",
+      "runOptions": {
+        "runOn": "folderOpen",
+      },
+      "isBackground": true,
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": false,
+        "revealProblems": "onProblem"
+      }
+    }
+  ]
+}
