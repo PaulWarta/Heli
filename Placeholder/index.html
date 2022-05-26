@@ -4,20 +4,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get On Board! - Isabell Block</title>
-  <meta name="description" content="Helikopterrundflüge zum Selbstkostenpreis. Als Pilotin mit der PPL Lizenz zeige ich Ihnen das RUhrgebiet von oben. Ich biete Ihnen verschiedene Touren an mit Aussicht über die eindrucksvollsten Stadien und Schlösser in NRW.">
+  <title>Get On Board! - Rundflüge mit Isabell Naomi Block</title>
+  <meta name="description" content="Helikopterrundflüge zum Selbstkostenpreis. Als Pilotin mit PPL Lizenz zeige ich Ihnen das Ruhrgebiet von oben. Ich biete Ihnen verschiedene Touren an mit Aussicht über die eindrucksvollsten Stadien und Schlösser in NRW.">
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <!-- <div style="height: 100vh; width: 2px; background: red; position: fixed; transform: translateX(calc(50vw - 2px)); top: 0"></div> -->
   <header>
     <nav>
-      <div id="HamburgerContainer" onclick="this.classList.toggle('open')">
-        <div></div>
+      <div id="HamburgerContainer">
+        <div id="Hamburger"></div>
         <div id="HamburgerMenu">
-          <a>Home</a>
-          <a>Datenschutz</a>
-          <a>Impressum</a>
+          <a destination="home">Home</a>
+          <a destination="kontakt">Kontakt</a>
+          <a destination="datenschutz">Datenschutz</a>
+          <a destination="impressum">Impressum</a>
         </div>
       </div>
       <div id="Heading">
@@ -25,18 +25,85 @@
         <p>ZUM SELBSTKOSTENPREIS</p>
       </div>
       <div id="KontaktContainer">
-        <img src="./Images/HeliReverse.svg" alt="Kontakt">
-        <p>KONTAKT</p>
+        <div id="KontaktMoverHoriz" class="kontaktOpener">
+          <div id="KontaktMoverVert" class="kontaktOpener">
+            <img id="KontaktHeli" src="./Images/HeliReverse.svg" alt="Kontakt" class="kontaktOpener">
+            <img id="BackArrow" class="kontaktOpener" src="./Images/BackArrow.svg" alt="Zurück">
+          </div>
+        </div>
+        <p class="kontaktOpener">KONTAKT</p>
       </div>
+      <div id="KontaktSection" class="kontaktOpener">
+        <div>
+          <img src="./Images/IsabellRahmen.svg" alt="Foto von Isabell Block">
+          <div>
+            <h2>25 Jahre alt <br>
+               PPL (H) <br>
+               Pilot in Comand 55 Stunden <br><br>
+               <a href="mailto:isabell.block96@gmail.com">Isabell.block96@gmail.com</a><br>
+               <a href="tel:+49 15730132906">015730132906</a>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <script>
+        function setKontaktTriggers() {
+          let notFirstRound = false;
+          const trigger1 = document.getElementById('KontaktContainer');
+          const trigger2 = document.querySelector('#HamburgerMenu > a[destination=kontakt]');
+          const elementList = document.querySelectorAll('.kontaktOpener');
+          const kontaktSection = document.getElementById('KontaktSection');
+          function cbf() {
+            elementList.forEach(e => {
+            e.classList.toggle('kontaktOpen');
+            if (notFirstRound) e.classList.toggle('kontaktClosed');
+            })
+            notFirstRound = true;
+          }
+          function cbf_open() {
+            if (kontaktSection.classList.contains('kontaktOpen')) {
+              document.getElementById('HamburgerContainer').click();
+            } else {
+              console.log("Test");
+              elementList.forEach(e => {
+              e.classList.toggle('kontaktOpen');
+              if (notFirstRound) e.classList.toggle('kontaktClosed');
+              })
+              notFirstRound = true;
+            }
+          }
+          trigger1.addEventListener('click', cbf);
+          trigger2.addEventListener('click', cbf_open);
+        }
+
+        function hamburgerDisappear() {
+          const hamburger = document.getElementById('HamburgerContainer');
+          const home = document.querySelector('#HamburgerMenu > a[destination=home]');
+          const kontakt = document.querySelector('#HamburgerMenu > a[destination=kontakt]');
+          const datenschtz = document.querySelector('#HamburgerMenu > a[destination=datenschutz]');
+          const impressum = document.querySelector('#HamburgerMenu > a[destination=impressum]');
+          const kontaktButton = document.getElementById('KontaktContainer');
+          const controller = new AbortController();
+
+          home.addEventListener('click', () => kontaktButton.click());
+          datenschtz.addEventListener('click', () => window.location.href = "./Impressum/index.html");
+          impressum.addEventListener('click', () => window.location.href = "./Datenschutz/index.html");
+          hamburger.addEventListener('click', () => {hamburger.classList.toggle('open')});
+        }
+
+        function main() {
+          setKontaktTriggers();
+          hamburgerDisappear();
+        }
+
+        document.onload = main();
+      </script>
     </nav>
   </header>
   <main>
     <h1>Helikopter Rundflüge in NRW.</h1>
-    <!-- <svg viewBox="0 0 100 100" id="MainTextClipper" preserveAspectRatio="none">
-      <path d="M0 70, L 100 0, L 100 100, L0 100, Z" fill="red" ></path>
-    </svg> -->
-    <img class="maps small" map-size="small" src="./Images/Map744x1133.svg" alt="Hintergrundgrafik">
-    <img class="maps large" map-size="large" src="./Images/Map1700x1100.svg" alt="Hintergrundgrafik">
+    <img class="maps small" map-size="small" src="./Images/Map_klein.svg" alt="Hintergrundgrafik">
+    <img class="maps large" map-size="large" src="./Images/Map_groß.svg" alt="Hintergrundgrafik">
   </main>
   <footer></footer>
 </body>
