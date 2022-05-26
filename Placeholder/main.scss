@@ -161,10 +161,33 @@ main {
     margin: 1em;
   }
 
-  img:last-child {
-    transform: rotate(12deg);
-    animation: hovering 800ms ease-in-out 0s infinite alternate;
+  img.maps {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
   }
+
+  @media screen and (max-width: 600px) {
+    img.small.small {
+      display: block;
+    }
+
+    img.large {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    img.small {
+      display: none;
+    }
+    
+    img.large {
+      display: block;
+    }
+  }
+
 
   @keyframes hovering {
     0% {
