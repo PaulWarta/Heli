@@ -1,49 +1,71 @@
 "use strict";
-function setKontaktTriggers() {
-    let notFirstRound = false;
-    const trigger1 = document.getElementById('KontaktContainer');
-    const trigger2 = document.querySelector('#HamburgerMenu > a[destination=kontakt]');
-    const elementList = document.querySelectorAll('.kontaktOpener');
-    const kontaktSection = document.getElementById('KontaktSection');
-    const hamburger = document.getElementById('Hamburger');
-    function cbf() {
-        elementList.forEach(e => {
-            e.classList.toggle('kontaktOpen');
-            if (notFirstRound)
-                e.classList.toggle('kontaktClosed');
+function main() {
+    let kontakt = 'closed';
+    let hamburgerMenu = 'closed';
+    const kontaktTargets = document.querySelectorAll('.kontaktOpener');
+    const hamburgerTargets = document.querySelectorAll('#HamburgerContainer');
+    let notFirstTime = false;
+    function setKontakt(newState) {
+        kontakt = newState;
+        kontaktTargets.forEach(e => {
+            if (newState == 'open') {
+                if (notFirstTime)
+                    e.classList.remove('kontaktClosed');
+                e.classList.add('kontaktOpen');
+                notFirstTime = true;
+            }
+            else {
+                if (notFirstTime)
+                    e.classList.add('kontaktClosed');
+                e.classList.remove('kontaktOpen');
+            }
         });
-        notFirstRound = true;
     }
-    function cbf_open() {
-        if (kontaktSection.classList.contains('kontaktOpen')) {
-            hamburger.click();
+    function setHamburgerMenu(newState) {
+        hamburgerMenu = newState;
+        hamburgerTargets.forEach(e => {
+            if (newState == 'open') {
+                e.classList.add('open');
+            }
+            else {
+                e.classList.remove('open');
+            }
+        });
+    }
+    const kontaktButton = document.getElementById('KontaktContainer');
+    const hamburgerButton = document.getElementById('HamburgerContainer');
+    const homeButton = document.querySelector('#HamburgerMenu > a[destination=home]');
+    const menuKontaktButton = document.querySelector('#HamburgerMenu > a[destination=kontakt]');
+    const datenschutzButton = document.querySelector('#HamburgerMenu > a[destination=datenschutz]');
+    const impressumButton = document.querySelector('#HamburgerMenu > a[destination=impressum]');
+    kontaktButton.addEventListener('click', () => {
+        if (kontakt == 'closed') {
+            setKontakt('open');
         }
         else {
-            console.log('Test');
-            elementList.forEach(e => {
-                e.classList.toggle('kontaktOpen');
-                if (notFirstRound)
-                    e.classList.toggle('kontaktClosed');
-            });
-            notFirstRound = true;
+            setKontakt('closed');
         }
-    }
-    trigger1.addEventListener('click', cbf);
-    trigger2.addEventListener('click', cbf_open);
-}
-function hamburgerDisappear() {
-    const hamburger = document.getElementById('HamburgerContainer');
-    const home = document.querySelector('#HamburgerMenu > a[destination=home]');
-    const datenschtz = document.querySelector('#HamburgerMenu > a[destination=datenschutz]');
-    const impressum = document.querySelector('#HamburgerMenu > a[destination=impressum]');
-    const kontaktButton = document.getElementById('KontaktContainer');
-    home.addEventListener('click', () => kontaktButton.click());
-    datenschtz.addEventListener('click', () => window.location.href = './Datenschutz/index.html');
-    impressum.addEventListener('click', () => window.location.href = './Impressum/index.html');
-    hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); });
-}
-function main() {
-    setKontaktTriggers();
-    hamburgerDisappear();
+        setHamburgerMenu('closed');
+    });
+    hamburgerButton.addEventListener('click', () => {
+        if (hamburgerMenu == 'open') {
+            setHamburgerMenu('closed');
+        }
+        else {
+            setHamburgerMenu('open');
+        }
+    });
+    homeButton.addEventListener('click', () => {
+        setKontakt('closed');
+    });
+    menuKontaktButton.addEventListener('click', () => {
+        setKontakt('open');
+    });
+    datenschutzButton.addEventListener('click', () => {
+        window.location.href = '/Datenschutz';
+    });
+    impressumButton.addEventListener('click', () => {
+        window.location.href = '/Impressum';
+    });
 }
 main();

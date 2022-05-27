@@ -169,37 +169,47 @@ nav {
     }
 
     #KontaktMoverHoriz {
-      will-change: transform;
+      transform: translateX(0vw);
       transition: transform $animationDuration ease-in-out;
 
       &.kontaktOpen {
-        transform: translateX(-88vw);
-        @media screen and (max-width: 900px) {
-          transform: translateX(-80vw);
-        }
-        @media screen and (max-width: 580px) {
+        transform: translateX(calc(-95vw + 50% + 16px));
+      }
+
+      &.kontaktClosed {
+        transform: translateX(0vw);
+      }
+
+      @media screen and (max-width: 700px) {
+        &.kontaktOpen {
+          transition: transform $animationDuration cubic-bezier(1,-0.02,.67,.67);
           transform: translateX(calc(-50vw + 50% + 16px));
+        }
+
+        &.kontaktClosed {
+          transition: transform $animationDuration cubic-bezier(.68,.28,.69,.83);
+          transform: translateX(0vw);
         }
       }
 
       #KontaktMoverVert {
         will-change: transform;
         transform: translateY(0vh);
-        transition: transform $animationDuration cubic-bezier(.56,-0.21,.52,1.02) 50ms;
+        transition: transform $animationDuration cubic-bezier(.56,-0.1,.52,1.02) 50ms;
         display: flex;
         justify-content: center;
 
         &.kontaktClosed {
-          transition: transform $animationDuration cubic-bezier(.51,.14,.55,1.18);
+          transition: transform $animationDuration cubic-bezier(.51,.14,.55,1);
         }
         
         &.kontaktOpen {
           transform: translateY(45vh);
         }
         
-        @media screen and (max-width: 580px) {
+        @media screen and (max-width: 700px) {
           &.kontaktOpen {
-            transform: translateY(20vh);
+            transform: translateY(calc(85vh + 50% + 16px));
           }
         }
 

@@ -1,50 +1,73 @@
-function setKontaktTriggers() {
-	let notFirstRound = false;
-	const trigger1 = document.getElementById('KontaktContainer') as HTMLElement;
-	const trigger2 = document.querySelector('#HamburgerMenu > a[destination=kontakt]') as HTMLElement;
-	const elementList = document.querySelectorAll('.kontaktOpener') as NodeListOf<HTMLElement>;
-	const kontaktSection = document.getElementById('KontaktSection') as HTMLElement;
-	const hamburger = document.getElementById('Hamburger') as HTMLElement;
-
-	function cbf() {
-		elementList.forEach(e => {
-			e.classList.toggle('kontaktOpen');
-			if (notFirstRound) e.classList.toggle('kontaktClosed');
-		});
-		notFirstRound = true;
-	}
-	function cbf_open() {
-		if (kontaktSection.classList.contains('kontaktOpen')) {
-			hamburger.click();
-		} else {
-			console.log('Test');
-			elementList.forEach(e => {
-				e.classList.toggle('kontaktOpen');
-				if (notFirstRound) e.classList.toggle('kontaktClosed');
-			});
-			notFirstRound = true;
-		}
-	}
-	trigger1.addEventListener('click', cbf);
-	trigger2.addEventListener('click', cbf_open);
-}
-
-function hamburgerDisappear() {
-	const hamburger = document.getElementById('HamburgerContainer') as HTMLElement;
-	const home = document.querySelector('#HamburgerMenu > a[destination=home]') as HTMLElement;
-	const datenschtz = document.querySelector('#HamburgerMenu > a[destination=datenschutz]') as HTMLElement;
-	const impressum = document.querySelector('#HamburgerMenu > a[destination=impressum]') as HTMLElement;
-	const kontaktButton = document.getElementById('KontaktContainer') as HTMLElement;
-
-	home.addEventListener('click', () => kontaktButton.click());
-	datenschtz.addEventListener('click', () => window.location.href = './Datenschutz/index.html');
-	impressum.addEventListener('click', () => window.location.href = './Impressum/index.html');
-	hamburger.addEventListener('click', () => {hamburger.classList.toggle('open');});
-}
+type State = 'open' | 'closed'
 
 function main() {
-	setKontaktTriggers();
-	hamburgerDisappear();
+	let kontakt: State = 'closed';
+	let hamburgerMenu: State = 'closed';
+
+	const kontaktTargets = document.querySelectorAll('.kontaktOpener') as NodeListOf<HTMLElement>;
+	const hamburgerTargets = document.querySelectorAll('#HamburgerContainer') as NodeListOf<HTMLElement>;
+	let notFirstTime = false;
+
+	function setKontakt(newState: State) {
+		kontakt = newState;
+		kontaktTargets.forEach(e => {
+			if (newState == 'open') {
+				if (notFirstTime) e.classList.remove('kontaktClosed');
+				e.classList.add('kontaktOpen');
+				notFirstTime = true;
+			} else {
+				if (notFirstTime) e.classList.add('kontaktClosed');
+				e.classList.remove('kontaktOpen');
+			}
+		});
+	}
+
+	function setHamburgerMenu(newState: State) {
+		hamburgerMenu = newState;
+		hamburgerTargets.forEach(e => {
+			if (newState == 'open') {
+				e.classList.add('open');
+			} else {
+				e.classList.remove('open');
+			}
+		});
+	}
+
+	const kontaktButton = document.getElementById('KontaktContainer') as HTMLElement;
+	const hamburgerButton = document.getElementById('HamburgerContainer') as HTMLElement;
+	const homeButton = document.querySelector('#HamburgerMenu > a[destination=home]') as HTMLElement;
+	const menuKontaktButton = document.querySelector('#HamburgerMenu > a[destination=kontakt]') as HTMLElement;
+	const datenschutzButton = document.querySelector('#HamburgerMenu > a[destination=datenschutz]') as HTMLElement;
+	const impressumButton = document.querySelector('#HamburgerMenu > a[destination=impressum]') as HTMLElement;
+
+	kontaktButton.addEventListener('click', () => {
+		if (kontakt == 'closed') {
+			setKontakt('open')
+		}
+		else {
+			setKontakt('closed')
+		}
+		setHamburgerMenu('closed')
+	});
+	hamburgerButton.addEventListener('click', () => {
+		if (hamburgerMenu == 'open') {
+			setHamburgerMenu('closed');
+		} else {
+			setHamburgerMenu('open');
+		}
+	})
+	homeButton.addEventListener('click', () => {
+		setKontakt('closed');
+	})
+	menuKontaktButton.addEventListener('click', () => {
+		setKontakt('open');
+	});
+	datenschutzButton.addEventListener('click', () => {
+		window.location.href = '/Datenschutz';
+	});
+	impressumButton.addEventListener('click', () => {
+		window.location.href = '/Impressum';
+	});
 }
 
 main()
