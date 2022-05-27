@@ -17,12 +17,14 @@ $background-gradient: radial-gradient(80% 80% at 0% 100%, hsla(285,10%,63%,1) 0%
 * {
   font-family: Helvetica, sans-serif;
   color: $font-color;
+  max-width: 2500px;
 }
 
 html {
   background: $background-gradient;
   height: 100vh;
   width: 100vw;
+  margin: 0 auto;
 }
 
 body {
@@ -30,10 +32,11 @@ body {
 }
 
 nav {
-  padding: 10px;
+  padding: 16px;
+  height: 27px;
 
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 
 
@@ -125,6 +128,10 @@ nav {
   }
 
   #Heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
     text-align: right;
     z-index: 9;
     margin: 0 1em;
@@ -133,7 +140,6 @@ nav {
     h2 {
       font-size: inherit;
       margin: 0;
-      line-height: 80%;
     }
 
     p {
@@ -153,12 +159,12 @@ nav {
     $animationDuration: 2000ms;
     cursor: pointer;
     
-    img {
-      width: 80%;
+    #KontaktHeli {
+      width: 70%;
       transition: 200ms ease-in-out;
     }
 
-    img:hover {
+    #KontaktHeli:hover {
       transform: rotateZ(-12deg);
     }
 
@@ -170,8 +176,8 @@ nav {
         @media screen and (max-width: 900px) {
           transform: translateX(-80vw);
         }
-        @media screen and (max-width: 500px) {
-          transform: translateX(calc(-50vw + 50% + 10px));
+        @media screen and (max-width: 580px) {
+          transform: translateX(calc(-50vw + 50% + 16px));
         }
       }
 
@@ -190,7 +196,7 @@ nav {
           transform: translateY(45vh);
         }
         
-        @media screen and (max-width: 500px) {
+        @media screen and (max-width: 580px) {
           &.kontaktOpen {
             transform: translateY(20vh);
           }
@@ -277,6 +283,7 @@ nav {
     top: 0;
     right: -100vw;
     z-index: 7;
+    font-size: $font-big;
 
     display: flex;
     align-items: center;
@@ -308,7 +315,7 @@ nav {
       }
 
       h2 {
-        font-size: $font-big;
+        font-size: inherit;
 
         a {
           text-decoration: none;
@@ -325,8 +332,8 @@ nav {
 
 main {
   h1 {
-    font-size: 4rem;
-    margin: 1em;
+    font-size: $font-large;
+    margin: 2.5em 3ch 0 78px;
   }
 
   img.maps {
@@ -335,18 +342,18 @@ main {
     left: 0;
     width: 100vw;
   }
-
-  @media screen and (max-width: 600px) {
+  
+  @media screen and (max-width: 1150px) {
     img.small {
       display: block;
     }
-
+    
     img.large {
       display: none;
     }
   }
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 1150px) {
     img.small {
       display: none;
     }
@@ -365,4 +372,34 @@ main {
       transform: translateY(15%) rotate(12deg);
     }
   }
+}
+
+
+
+
+
+
+
+
+
+
+// Desgin Helper
+
+#DesignGrid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 500;
+  
+  display: grid;
+
+  div.column {
+    display: none;
+    height: 100vh;
+    background: rgba(252, 0, 151, 0.5);
+  }
+  
+  
 }

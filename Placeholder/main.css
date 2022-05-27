@@ -1,12 +1,14 @@
 * {
   font-family: Helvetica, sans-serif;
   color: #fff;
+  max-width: 2500px;
 }
 
 html {
   background: radial-gradient(80% 80% at 0% 100%, #a597aa 0%, rgba(165, 151, 170, 0) 100%), radial-gradient(80% 80% at 100% 0%, #a597aa 0%, rgba(165, 151, 170, 0) 100%), #6eb2c9;
   height: 100vh;
   width: 100vw;
+  margin: 0 auto;
 }
 
 body {
@@ -14,9 +16,10 @@ body {
 }
 
 nav {
-  padding: 10px;
+  padding: 16px;
+  height: 27px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 nav #HamburgerContainer {
@@ -91,6 +94,10 @@ nav #HamburgerContainer.open #HamburgerMenu {
   transform: translateX(100%);
 }
 nav #Heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
   text-align: right;
   z-index: 9;
   margin: 0 1em;
@@ -99,7 +106,6 @@ nav #Heading {
 nav #Heading h2 {
   font-size: inherit;
   margin: 0;
-  line-height: 80%;
 }
 nav #Heading p {
   font-size: 0.5627813555rem;
@@ -115,11 +121,11 @@ nav #KontaktContainer {
   z-index: 9;
   cursor: pointer;
 }
-nav #KontaktContainer img {
-  width: 80%;
+nav #KontaktContainer #KontaktHeli {
+  width: 70%;
   transition: 200ms ease-in-out;
 }
-nav #KontaktContainer img:hover {
+nav #KontaktContainer #KontaktHeli:hover {
   transform: rotateZ(-12deg);
 }
 nav #KontaktContainer #KontaktMoverHoriz {
@@ -133,9 +139,9 @@ nav #KontaktContainer #KontaktMoverHoriz.kontaktOpen {
     transform: translateX(-80vw);
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 580px) {
   nav #KontaktContainer #KontaktMoverHoriz.kontaktOpen {
-    transform: translateX(calc(-50vw + 50% + 10px));
+    transform: translateX(calc(-50vw + 50% + 16px));
   }
 }
 nav #KontaktContainer #KontaktMoverHoriz #KontaktMoverVert {
@@ -151,7 +157,7 @@ nav #KontaktContainer #KontaktMoverHoriz #KontaktMoverVert.kontaktClosed {
 nav #KontaktContainer #KontaktMoverHoriz #KontaktMoverVert.kontaktOpen {
   transform: translateY(45vh);
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 580px) {
   nav #KontaktContainer #KontaktMoverHoriz #KontaktMoverVert.kontaktOpen {
     transform: translateY(20vh);
   }
@@ -223,6 +229,7 @@ nav #KontaktSection {
   top: 0;
   right: -100vw;
   z-index: 7;
+  font-size: 1.333rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -249,7 +256,7 @@ nav #KontaktSection > div div {
   text-transform: uppercase;
 }
 nav #KontaktSection > div h2 {
-  font-size: 1.333rem;
+  font-size: inherit;
 }
 nav #KontaktSection > div h2 a {
   text-decoration: none;
@@ -260,8 +267,8 @@ nav #KontaktSection.kontaktOpen {
 }
 
 main h1 {
-  font-size: 4rem;
-  margin: 1em;
+  font-size: 2.368593037rem;
+  margin: 2.5em 3ch 0 78px;
 }
 main img.maps {
   position: fixed;
@@ -269,7 +276,7 @@ main img.maps {
   left: 0;
   width: 100vw;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1150px) {
   main img.small {
     display: block;
   }
@@ -277,7 +284,7 @@ main img.maps {
     display: none;
   }
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1150px) {
   main img.small {
     display: none;
   }
@@ -292,6 +299,21 @@ main img.maps {
   100% {
     transform: translateY(15%) rotate(12deg);
   }
+}
+
+#DesignGrid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 500;
+  display: grid;
+}
+#DesignGrid div.column {
+  display: none;
+  height: 100vh;
+  background: rgba(252, 0, 151, 0.5);
 }
 
 /*# sourceMappingURL=main.css.map */
