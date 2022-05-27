@@ -38,8 +38,8 @@ function hamburgerDisappear() {
     const impressum = document.querySelector('#HamburgerMenu > a[destination=impressum]');
     const kontaktButton = document.getElementById('KontaktContainer');
     home.addEventListener('click', () => kontaktButton.click());
-    datenschtz.addEventListener('click', () => window.location.href = './Impressum/index.html');
-    impressum.addEventListener('click', () => window.location.href = './Datenschutz/index.html');
+    datenschtz.addEventListener('click', () => window.location.href = './Datenschutz/index.html');
+    impressum.addEventListener('click', () => window.location.href = './Impressum/index.html');
     hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); });
 }
 function main() {

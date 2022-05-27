@@ -37,8 +37,8 @@ function hamburgerDisappear() {
 	const kontaktButton = document.getElementById('KontaktContainer') as HTMLElement;
 
 	home.addEventListener('click', () => kontaktButton.click());
-	datenschtz.addEventListener('click', () => window.location.href = './Impressum/index.html');
-	impressum.addEventListener('click', () => window.location.href = './Datenschutz/index.html');
+	datenschtz.addEventListener('click', () => window.location.href = './Datenschutz/index.html');
+	impressum.addEventListener('click', () => window.location.href = './Impressum/index.html');
 	hamburger.addEventListener('click', () => {hamburger.classList.toggle('open');});
 }
 

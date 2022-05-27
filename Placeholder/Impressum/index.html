@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get On Board! - Impressum</title>
+  </head>
+  <body>
+    <style>
+      * {
+        color: white;
+        font-family: Helvetica, sans-serif;
+      }
+      html {
+        background: #1e7799;
+      }
+      nav {
+        padding: 16px;
+        height: 27px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+      nav #BackArrow {
+        width: 6ch;
+        cursor: pointer;
+      }
+      nav #Heading {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        text-align: right;
+        z-index: 9;
+        margin: 0 1em;
+        font-size: clamp(0px, 6vw, 2.368593037rem);
+      }
+      nav #Heading h2 {
+        font-size: inherit;
+        margin: 0;
+      }
+      nav #Heading p {
+        font-size: 0.5627813555rem;
+        margin: 0;
+      }
+      nav #Heli {
+        width: 6ch;
+      }
+      main {
+        position: relative;
+        top: 8em;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: fit-content;
+        margin: auto;
+      }
+    </style>
+    <header>
+      <nav>
+        <img id="BackArrow" src="../Images/BackArrow.svg" alt="Zurück" onclick="window.location.href = '/'">
+        <div id="Heading">
+          <h2>GET ON BOARD!</h2>
+          <p>ZUM SELBSTKOSTENPREIS</p>
+        </div>
+        <img id="Heli" src="../Images/HeliReverse.svg" alt="HeliGrafik">
+      </nav>
+    </header>
+    <main>
+      <h1>Impressum</h1>
+  
+      <h2>Angaben gemäß § 5 TMG</h2>
+      <p>
+        Isabell Naomi Block<br />
+        Lindenhof 77<br />
+        45481 Mülheim an der Ruhr
+      </p>
+  
+      <h2>Kontakt</h2>
+      <p>
+        Telefon: 0157 30132906<br />
+        E-Mail: isabell@getonboard.de
+      </p>
+    </main>
+  </body>
+</html>
