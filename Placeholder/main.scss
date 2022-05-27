@@ -81,6 +81,7 @@ nav {
       height: 3px;
       border-radius: 8px;
       transform: translateY(math.div($height, 2));
+      will-change: transform;
       transition: background-color 400ms ease-in-out;
       z-index: 15;
       
@@ -169,6 +170,7 @@ nav {
     }
 
     #KontaktMoverHoriz {
+      will-change: transform;
       transition: transform $animationDuration ease-in-out;
 
       &.kontaktOpen {

@@ -58,6 +58,7 @@ nav #HamburgerContainer #Hamburger {
   height: 3px;
   border-radius: 8px;
   transform: translateY(12px);
+  will-change: transform;
   transition: background-color 400ms ease-in-out;
   z-index: 15;
 }
@@ -129,6 +130,7 @@ nav #KontaktContainer #KontaktHeli:hover {
   transform: rotateZ(-12deg);
 }
 nav #KontaktContainer #KontaktMoverHoriz {
+  will-change: transform;
   transition: transform 2000ms ease-in-out;
 }
 nav #KontaktContainer #KontaktMoverHoriz.kontaktOpen {
