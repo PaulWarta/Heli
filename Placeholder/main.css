@@ -167,12 +167,12 @@ nav #KontaktContainer #KontaktMoverHoriz #KontaktMoverVert #BackArrow {
   width: 75%;
   transform: translateY(100%);
   opacity: 0;
-  transition: opacity 100ms 2000ms ease-in-out;
 }
 nav #KontaktContainer #KontaktMoverHoriz #KontaktMoverVert #BackArrow.kontaktClosed {
   transition: opacity 100ms ease-in-out;
 }
 nav #KontaktContainer #KontaktMoverHoriz #KontaktMoverVert #BackArrow.kontaktOpen {
+  transition: opacity 100ms 2000ms ease-in-out;
   opacity: 1;
 }
 nav #KontaktContainer #KontaktMoverHoriz #KontaktMoverVert #KontaktHeli {
