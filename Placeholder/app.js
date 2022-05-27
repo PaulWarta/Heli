@@ -43,6 +43,7 @@ function hamburgerDisappear() {
 	hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); });
 }
 function main() {
+    console.log("Test")
 	setKontaktTriggers();
 	hamburgerDisappear();
 }
