@@ -47,4 +47,4 @@ function main() {
 	hamburgerDisappear();
 }
 
-document.onload = main;
+main()
