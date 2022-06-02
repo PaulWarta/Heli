@@ -209,7 +209,7 @@ nav {
         
         @media screen and (max-width: 700px) {
           &.kontaktOpen {
-            transform: translateY(calc(85vh + 50% + 16px));
+            transform: translateY(calc(75vh + 50% + 16px));
           }
         }
 
@@ -294,7 +294,7 @@ nav {
     top: 0;
     right: -100vw;
     z-index: 7;
-    font-size: $font-big;
+    font-size: clamp(0px, 4vw, #{$font-big});
 
     display: flex;
     align-items: center;
@@ -317,8 +317,8 @@ nav {
       
     
       img {
-        width: 250px;
-        height: 250px;
+        width: min(250px, 75vw);
+        height: min(250px, 75vw);
       }
 
       div {
@@ -353,8 +353,10 @@ main {
     left: 0;
     width: 100vw;
   }
+
+  $map_switcher: 600px;
   
-  @media screen and (max-width: 1150px) {
+  @media screen and (max-width: $map_switcher) {
     img.small {
       display: block;
     }
@@ -364,7 +366,7 @@ main {
     }
   }
 
-  @media screen and (min-width: 1150px) {
+  @media screen and (min-width: $map_switcher) {
     img.small {
       display: none;
     }

@@ -10,7 +10,7 @@ describe('Test the Hamburger Button', () => {
         cy.viewport(size)
       }
       cy.visit('localhost:5500')
-      cy.get('main > h1').should('not.covering')
+      cy.get('main > h1').should('be.visible')
       cy.get('#HamburgerContainer').click()
       cy.get('#HamburgerMenu').should('be.visible')
       cy.get('#HamburgerMenu > a[destination=home]').click()

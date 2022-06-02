@@ -163,7 +163,7 @@ nav #KontaktContainer #KontaktMoverHoriz #KontaktMoverVert.kontaktOpen {
 }
 @media screen and (max-width: 700px) {
   nav #KontaktContainer #KontaktMoverHoriz #KontaktMoverVert.kontaktOpen {
-    transform: translateY(calc(85vh + 50% + 16px));
+    transform: translateY(calc(75vh + 50% + 16px));
   }
 }
 nav #KontaktContainer #KontaktMoverHoriz #KontaktMoverVert #BackArrow {
@@ -233,7 +233,7 @@ nav #KontaktSection {
   top: 0;
   right: -100vw;
   z-index: 7;
-  font-size: 1.333rem;
+  font-size: clamp(0px, 4vw, 1.333rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -253,8 +253,8 @@ nav #KontaktSection > div {
   justify-items: center;
 }
 nav #KontaktSection > div img {
-  width: 250px;
-  height: 250px;
+  width: min(250px, 75vw);
+  height: min(250px, 75vw);
 }
 nav #KontaktSection > div div {
   text-transform: uppercase;
@@ -280,7 +280,7 @@ main img.maps {
   left: 0;
   width: 100vw;
 }
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 600px) {
   main img.small {
     display: block;
   }
@@ -288,7 +288,7 @@ main img.maps {
     display: none;
   }
 }
-@media screen and (min-width: 1150px) {
+@media screen and (min-width: 600px) {
   main img.small {
     display: none;
   }
