@@ -14,10 +14,6 @@ $background-gradient: radial-gradient(80% 80% at 0% 100%, hsla(285,10%,63%,1) 0%
                       radial-gradient(80% 80% at 100% 0%, hsla(285,10%,63%,1) 0%, hsla(285,10%,63%,0) 100%),
                       hsla(195,46%,61%,1);
 
-:root {
-  --font-large: #{$font-large};
-}
-
 * {
   font-family: Helvetica, sans-serif;
   color: $font-color;
