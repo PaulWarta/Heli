@@ -356,26 +356,27 @@ main {
 
   $map_switcher: 600px;
   
-  @media screen and (max-width: $map_switcher) {
-    img.small {
-      display: block;
-    }
-    
-    img.large {
-      display: none;
-    }
+  #MapSizeHelper {
+    position: absolute;
+    visibility: hidden;
+    height: calc(#{4 * $font-large * 1.16} + #{2.5 * $font-large} + 86vw + 59px);
   }
 
-  @media screen and (min-width: $map_switcher) {
-    img.small {
-      display: none;
-    }
-    
-    img.large {
-      display: block;
-    }
+  img.small {
+    display: none;
+  }
+  
+  img.large {
+    display: none;
   }
 
+  img.small.imgOpen {
+    display: block;
+  }
+  
+  img.large.imgOpen {
+    display: block;
+  }
 
   @keyframes hovering {
     0% {
@@ -396,23 +397,23 @@ main {
 
 
 
-// Desgin Helper
+// // Desgin Helper
 
-#DesignGrid {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100vh;
-  z-index: 500;
+// #DesignGrid {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   height: 100vh;
+//   z-index: 500;
   
-  display: grid;
+//   display: grid;
 
-  div.column {
-    display: none;
-    height: 100vh;
-    background: rgba(252, 0, 151, 0.5);
-  }
+//   div.column {
+//     display: none;
+//     height: 100vh;
+//     background: rgba(252, 0, 151, 0.5);
+//   }
   
   
-}
+// }

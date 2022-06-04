@@ -280,21 +280,22 @@ main img.maps {
   left: 0;
   width: 100vw;
 }
-@media screen and (max-width: 600px) {
-  main img.small {
-    display: block;
-  }
-  main img.large {
-    display: none;
-  }
+main #MapSizeHelper {
+  position: absolute;
+  visibility: hidden;
+  height: calc(10.9902716917rem + 5.9214825925rem + 86vw + 59px);
 }
-@media screen and (min-width: 600px) {
-  main img.small {
-    display: none;
-  }
-  main img.large {
-    display: block;
-  }
+main img.small {
+  display: none;
+}
+main img.large {
+  display: none;
+}
+main img.small.imgOpen {
+  display: block;
+}
+main img.large.imgOpen {
+  display: block;
 }
 @keyframes hovering {
   0% {
@@ -303,21 +304,6 @@ main img.maps {
   100% {
     transform: translateY(15%) rotate(12deg);
   }
-}
-
-#DesignGrid {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100vh;
-  z-index: 500;
-  display: grid;
-}
-#DesignGrid div.column {
-  display: none;
-  height: 100vh;
-  background: rgba(252, 0, 151, 0.5);
 }
 
 /*# sourceMappingURL=main.css.map */
