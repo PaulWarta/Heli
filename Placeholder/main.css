@@ -1,3 +1,7 @@
+:root {
+  --font-large: 2.368593037rem;
+}
+
 * {
   font-family: Helvetica, sans-serif;
   color: #fff;
@@ -280,21 +284,20 @@ main img.maps {
   left: 0;
   width: 100vw;
 }
-@media screen and (max-width: 600px) {
-  main img.small {
-    display: block;
-  }
-  main img.large {
-    display: none;
-  }
+main #Tester {
+  height: calc(10.9902716917rem + 5.9214825925rem + 86vw + 59px);
 }
-@media screen and (min-width: 600px) {
-  main img.small {
-    display: none;
-  }
-  main img.large {
-    display: block;
-  }
+main img.small {
+  display: none;
+}
+main img.large {
+  display: none;
+}
+main img.small.imgOpen {
+  display: block;
+}
+main img.large.imgOpen {
+  display: block;
 }
 @keyframes hovering {
   0% {

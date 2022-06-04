@@ -14,6 +14,10 @@ $background-gradient: radial-gradient(80% 80% at 0% 100%, hsla(285,10%,63%,1) 0%
                       radial-gradient(80% 80% at 100% 0%, hsla(285,10%,63%,1) 0%, hsla(285,10%,63%,0) 100%),
                       hsla(195,46%,61%,1);
 
+:root {
+  --font-large: #{$font-large};
+}
+
 * {
   font-family: Helvetica, sans-serif;
   color: $font-color;
@@ -356,27 +360,26 @@ main {
 
   $map_switcher: 600px;
   
-  @media screen and (max-width: $map_switcher) {
-    img.small {
-      display: block;
-    }
-    
-    img.large {
-      display: none;
-    }
+  #Tester {
+    height: calc(#{4 * $font-large * 1.16} + #{2.5 * $font-large} + 86vw + 59px);
   }
 
-  @media screen and (min-width: $map_switcher) {
-    img.small {
-      display: none;
-    }
-    
-    img.large {
-      display: block;
-    }
+  img.small {
+    display: none;
+  }
+  
+  img.large {
+    display: none;
   }
 
-
+  img.small.imgOpen {
+    display: block;
+  }
+  
+  img.large.imgOpen {
+    display: block;
+  }
+  
   @keyframes hovering {
     0% {
       transform: translateY(0%) rotate(12deg);
