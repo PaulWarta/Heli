@@ -342,9 +342,10 @@ nav {
 }
 
 main {
+
   h1 {
-    font-size: $font-large;
-    margin: 2.5em 3ch 0 78px;
+    font-size: clamp(28px, 4vw, #{$font-large});
+    margin: 2em 78px 0 78px;
   }
 
   img.maps {
@@ -352,14 +353,6 @@ main {
     bottom: 0;
     left: 0;
     width: 100vw;
-  }
-
-  $map_switcher: 600px;
-  
-  #MapSizeHelper {
-    position: absolute;
-    visibility: hidden;
-    height: calc(#{4 * $font-large * 1.16} + #{2.5 * $font-large} + 86vw + 59px);
   }
 
   img.small {
