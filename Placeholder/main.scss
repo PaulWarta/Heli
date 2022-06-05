@@ -274,6 +274,12 @@ nav {
       }
     }
 
+    @media screen and (hover: none) {
+      #KontaktHeli:hover {
+        transform: rotateZ(0deg);
+      }
+    }
+
     p {
       margin: 0;
       margin-top: 4px;

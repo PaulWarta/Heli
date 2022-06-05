@@ -217,6 +217,11 @@ nav #KontaktContainer #KontaktMoverHoriz #KontaktMoverVert #KontaktHeli.kontaktO
     transform: rotateZ(0deg);
   }
 }
+@media screen and (hover: none) {
+  nav #KontaktContainer #KontaktHeli:hover {
+    transform: rotateZ(0deg);
+  }
+}
 nav #KontaktContainer p {
   margin: 0;
   margin-top: 4px;
