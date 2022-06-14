@@ -5,12 +5,14 @@
 * {
   font-family: BebasNeue;
   color: #fff;
+  box-sizing: border-box;
 }
 
 html {
   height: 100vh;
   width: 100vw;
   margin: 0 auto;
+  background: radial-gradient(80% 80% at 0% 100%, #a597aa 0%, rgba(165, 151, 170, 0) 100%), radial-gradient(80% 80% at 100% 0%, #a597aa 0%, rgba(165, 151, 170, 0) 100%), #6eb2c9;
 }
 
 body {
@@ -20,9 +22,13 @@ body {
 nav {
   padding: 16px;
   height: fit-content;
+  position: fixed;
+  top: 0;
+  width: 100vw;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  z-index: 7;
 }
 nav #HamburgerContainer {
   font-size: 1.2rem;
@@ -300,6 +306,8 @@ main #HeroBackground {
   position: fixed;
   top: 0;
   left: 0;
+  opacity: 0.4;
+  z-index: -1;
   object-fit: cover;
 }
 main img.maps {

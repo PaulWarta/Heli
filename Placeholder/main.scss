@@ -22,12 +22,14 @@ $background-gradient: radial-gradient(80% 80% at 0% 100%, hsla(285,10%,63%,1) 0%
 * {
   font-family: BebasNeue;
   color: $font-color;
+  box-sizing: border-box;
 }
 
 html {
   height: 100vh;
   width: 100vw;
   margin: 0 auto;
+  background: $background-gradient;
 }
 
 body {
@@ -37,11 +39,15 @@ body {
 nav {
   padding: 16px;
   height: fit-content;
+  position: fixed;
+  top: 0;
+  width: 100vw;
 
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 
+  z-index: 7;
 
   #HamburgerContainer {
     $height: 32px;
@@ -375,6 +381,8 @@ main {
     position: fixed;
     top: 0;
     left: 0;
+    opacity: 0.4;
+    z-index: -1;
     object-fit: cover;
   }
 
