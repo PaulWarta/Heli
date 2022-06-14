@@ -1,5 +1,6 @@
 @use "sass:math";
 @use "sass:color";
+@import url('./Images/Bebas_Neue/BebasNeue-Regular.ttf');
 
 $font-scaler: 1.333;
 $font-smaller: 1rem * math.pow($font-scaler, -2);
@@ -15,12 +16,12 @@ $background-gradient: radial-gradient(80% 80% at 0% 100%, hsla(285,10%,63%,1) 0%
                       hsla(195,46%,61%,1);
 
 * {
-  font-family: Helvetica, sans-serif;
+  font-family: 'Bebas Neue';
   color: $font-color;
 }
 
 html {
-  background: $background-gradient;
+  background-image: url('./Images/Background.jpg');
   height: 100vh;
   width: 100vw;
   margin: 0 auto;
@@ -32,7 +33,7 @@ body {
 
 nav {
   padding: 16px;
-  height: 27px;
+  height: fit-content;
 
   display: flex;
   align-items: flex-start;
@@ -44,7 +45,10 @@ nav {
     font-size: $font-normal;
     height: $height;
     z-index: 20;
+    width: 42px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
 
     #HamburgerMenu {
       position: fixed;
@@ -77,7 +81,7 @@ nav {
     #Hamburger {
       position: relative;
       background: $font-color;
-      width: 42px;
+      width: clamp(25px, 8vw, 42px);
       height: 3px;
       border-radius: 8px;
       transform: translateY(math.div($height, 2));
@@ -102,6 +106,20 @@ nav {
 
       &::after {
         transform: translateY(math.div($height, 2));
+      }
+      
+      @media screen and (max-width: 420px) {
+        height: 2px;
+
+        &::before {
+          height: 2px;
+          transform: translateY(math.div($height, -2.5));
+        }
+        
+        &::after {
+          height: 2px;
+          transform: translateY(math.div($height, 2.5));
+        }
       }
     }
 
@@ -136,16 +154,11 @@ nav {
     text-align: right;
     z-index: 9;
     margin: 0 1em;
+    width: 40vw;
     font-size: clamp(0px, 6vw, #{$font-large});
     
-    h2 {
-      font-size: inherit;
-      margin: 0;
-    }
-
-    p {
-      font-size: $font-smaller;
-      margin: 0;
+    img {
+      width: 100%;
     }
   }
 
@@ -166,15 +179,16 @@ nav {
     }
 
     #KontaktHeli:hover {
-      transform: rotateZ(-12deg);
+      transform: rotateZ(-12deg); 
     }
 
     #KontaktMoverHoriz {
+      will-change: transform;
       transform: translateX(0vw);
       transition: transform $animationDuration ease-in-out;
 
       &.kontaktOpen {
-        transform: translateX(calc(-95vw + 50% + 16px));
+        transform: translateX(calc(-100vw + 9ch + 24px));
       }
 
       &.kontaktClosed {
@@ -183,11 +197,13 @@ nav {
 
       @media screen and (max-width: 700px) {
         &.kontaktOpen {
-          transition: transform $animationDuration cubic-bezier(1,-0.02,.67,.67);
+          will-change: transform;
+          transition: transform $animationDuration cubic-bezier(.86,.15,.55,.64);
           transform: translateX(calc(-50vw + 50% + 16px));
         }
 
         &.kontaktClosed {
+          will-change: transform;
           transition: transform $animationDuration cubic-bezier(.68,.28,.69,.83);
           transform: translateX(0vw);
         }
@@ -196,7 +212,7 @@ nav {
       #KontaktMoverVert {
         will-change: transform;
         transform: translateY(0vh);
-        transition: transform $animationDuration cubic-bezier(.56,-0.1,.52,1.02) 50ms;
+        transition: transform $animationDuration cubic-bezier(.56,-0.1,.52,1.02);
         display: flex;
         justify-content: center;
 
@@ -285,7 +301,6 @@ nav {
       margin-top: 4px;
       opacity: 1;
       transition: opacity $animationDuration;
-      font-weight: bold;
 
       &.kontaktOpen {
         opacity: 0;
@@ -350,10 +365,10 @@ nav {
 
 main {
 
-  h1 {
-    font-size: clamp(28px, 4vw, #{$font-large});
-    margin: 2em 78px 0 78px;
-  }
+  // h1 {
+  //   font-size: clamp(28px, 4vw, #{$font-large});
+  //   margin: 2em 78px 0 78px;
+  // }
 
   img.maps {
     position: fixed;
@@ -362,21 +377,42 @@ main {
     width: 100vw;
   }
 
-  img.small {
-    display: none;
+  $map_switcher: 600px;
+
+  @media screen and (max-width: $map_switcher) {
+    img.small {
+      display: block;
+    }
+    img.large {
+      display: none;
+    }
   }
   
-  img.large {
-    display: none;
+  @media screen and (min-width: $map_switcher) {
+    img.small {
+      display: none;
+    }
+    img.large {
+      display: block;
+    }
   }
 
-  img.small.imgOpen {
-    display: block;
-  }
+  // img.small {
+  //   display: none;
+  // }
   
-  img.large.imgOpen {
-    display: block;
-  }
+  // img.large {
+  //   display: none;
+  // }
+
+  // img.small.imgOpen {
+  //   display: block;
+  // }
+  
+  // img.large.imgOpen {
+  //   display: block;
+  // }
+
   @keyframes hovering {
     0% {
       transform: translateY(0%) rotate(12deg);
