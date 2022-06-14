@@ -19,7 +19,7 @@ function map_picker() {
             window.addEventListener('resize', () => {
                 adjustMap();
             }, { once: true });
-        }, 20);
+        }, 60);
     }
     function calcSwitchValue() {
         return textContainer.offsetHeight + parseInt(getComputedStyle(textContainer).marginTop) + header.offsetHeight + 0.86 * window.innerWidth;

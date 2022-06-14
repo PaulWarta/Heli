@@ -82,7 +82,7 @@ nav {
 
       a {
         font-size: inherit;
-        margin: 2em 0;
+        margin: min(2em, 7vh) 0;
         cursor: pointer;
       }
     }
@@ -92,7 +92,6 @@ nav {
       background: $font-color;
       width: clamp(25px, 8vw, 52px);
       height: 4px;
-      border-radius: 8px;
       transform: translateY(math.div($height, 2));
       will-change: transform;
       transition: background-color 400ms ease-in-out;

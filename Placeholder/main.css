@@ -60,7 +60,7 @@ nav #HamburgerContainer #HamburgerMenu {
 }
 nav #HamburgerContainer #HamburgerMenu a {
   font-size: inherit;
-  margin: 2em 0;
+  margin: min(2em, 7vh) 0;
   cursor: pointer;
 }
 nav #HamburgerContainer #Hamburger {
@@ -68,7 +68,6 @@ nav #HamburgerContainer #Hamburger {
   background: #fff;
   width: clamp(25px, 8vw, 52px);
   height: 4px;
-  border-radius: 8px;
   transform: translateY(16px);
   will-change: transform;
   transition: background-color 400ms ease-in-out;
