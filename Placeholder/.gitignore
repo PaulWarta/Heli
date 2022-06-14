@@ -3,3 +3,13 @@ package*.json
 server.js
 
 /cypress
+/.parcel-cache
+/.vscode
+/dist
+.eslintrc.json
+coverage_2.txt
+Coverage.java
+Coverage.sh
+coverage.txt
+cypress.json
+tsconfig.json
