@@ -1,11 +1,13 @@
-@import url("./Images/Bebas_Neue/BebasNeue-Regular.ttf");
+@font-face {
+  font-family: BebasNeue;
+  src: url("./Images/Bebas_Neue/BebasNeue-Regular.ttf");
+}
 * {
-  font-family: "Bebas Neue";
+  font-family: BebasNeue;
   color: #fff;
 }
 
 html {
-  background-image: url("./Images/Background.jpg");
   height: 100vh;
   width: 100vw;
   margin: 0 auto;
@@ -23,10 +25,10 @@ nav {
   justify-content: space-between;
 }
 nav #HamburgerContainer {
-  font-size: 1rem;
-  height: 24px;
+  font-size: 1.2rem;
+  height: 32px;
   z-index: 20;
-  width: 42px;
+  width: 52px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -34,7 +36,7 @@ nav #HamburgerContainer {
 nav #HamburgerContainer #HamburgerMenu {
   position: fixed;
   top: 0;
-  font-size: 1.776889rem;
+  font-size: 2.1322668rem;
   left: -20ch;
   width: 20ch;
   height: 100vh;
@@ -44,7 +46,7 @@ nav #HamburgerContainer #HamburgerMenu {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 72px 0 72px 3ch;
+  padding: 96px 0 96px 3ch;
   align-items: flex-start;
   z-index: 10;
   will-change: transform;
@@ -58,10 +60,10 @@ nav #HamburgerContainer #HamburgerMenu a {
 nav #HamburgerContainer #Hamburger {
   position: relative;
   background: #fff;
-  width: clamp(25px, 8vw, 42px);
-  height: 3px;
+  width: clamp(25px, 8vw, 52px);
+  height: 4px;
   border-radius: 8px;
-  transform: translateY(12px);
+  transform: translateY(16px);
   will-change: transform;
   transition: background-color 400ms ease-in-out;
   z-index: 15;
@@ -72,27 +74,27 @@ nav #HamburgerContainer #Hamburger::before, nav #HamburgerContainer #Hamburger::
   position: absolute;
   content: "";
   width: inherit;
-  height: 3px;
+  height: 4px;
   background-color: #fff;
   transform-origin: center;
 }
 nav #HamburgerContainer #Hamburger::before {
-  transform: translateY(-12px);
+  transform: translateY(-16px);
 }
 nav #HamburgerContainer #Hamburger::after {
-  transform: translateY(12px);
+  transform: translateY(16px);
 }
 @media screen and (max-width: 420px) {
   nav #HamburgerContainer #Hamburger {
-    height: 2px;
+    height: 3px;
   }
   nav #HamburgerContainer #Hamburger::before {
-    height: 2px;
-    transform: translateY(-9.6px);
+    height: 3px;
+    transform: translateY(-12.8px);
   }
   nav #HamburgerContainer #Hamburger::after {
-    height: 2px;
-    transform: translateY(9.6px);
+    height: 3px;
+    transform: translateY(12.8px);
   }
 }
 nav #HamburgerContainer.open #Hamburger {
@@ -120,14 +122,15 @@ nav #Heading {
   z-index: 9;
   margin: 0 1em;
   width: 40vw;
-  font-size: clamp(0px, 6vw, 2.368593037rem);
+  max-width: 475px;
+  font-size: clamp(0px, 6vw, 2.8423116444rem);
 }
 nav #Heading img {
   width: 100%;
 }
 nav #KontaktContainer {
   width: 9ch;
-  font-size: clamp(0.7501875469rem, 3vw, 1rem);
+  font-size: clamp(20px, 2.5vw, 1.8rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -254,7 +257,7 @@ nav #KontaktSection {
   top: 0;
   right: -100vw;
   z-index: 7;
-  font-size: clamp(0px, 4vw, 1.333rem);
+  font-size: clamp(0px, 4vw, 1.5996rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -291,6 +294,14 @@ nav #KontaktSection.kontaktOpen {
   opacity: 1;
 }
 
+main #HeroBackground {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
 main img.maps {
   position: fixed;
   bottom: 0;
